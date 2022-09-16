@@ -1,3 +1,7 @@
+@import 'tailwindcss/base';
+@import 'tailwindcss/components';
+@import 'tailwindcss/utilities';
+
 html, body {
   padding: 0;
   margin: 0;
@@ -39,7 +43,24 @@ a {
 .sidebar-items:hover p {
   color: #fff;
 }
+.active-icon{
+  margin-right: 15px;
+}
+.list-none{
+  list-style: none;
+  padding: 15px 0;
+}
+.list-none:hover{
+  cursor: pointer;
+}
+.ContainerAdmin{
+  display: grid;
+  grid-template-columns: 1fr 6fr;
+}
 
+.sidemenu{
+  width: 100%;
+}
 .active {
   color: #fff;
 }
@@ -47,3 +68,20 @@ a {
 .active-icon {
   color: #B57295 !important;
 }
+.menu{
+  display: flex;
+  align-items: center;
+}
+.chakra-tabs__tablist{
+  padding: 20px 0;
+}
+.chakra-tabs__tab-panel{
+  display: flex;
+  justify-content: center;
+}
+
+.Pie{
+  max-height: 500px;
+  max-width: 500px;
+}
+

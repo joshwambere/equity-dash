@@ -1,20 +1,4 @@
-# Dashboard UI
-
-Built using:
-
-| Name | Version | Docs/GitHub/Website |
-| ----------- | ----------- | ----------- |
-| Chakra UI | 1.6.2 | https://chakra-ui.com/ |
-| ChartJS   | 3.3.0 | https://www.chartjs.org/docs/master/ |
-| React  Icons (Feather) | 4.28.0 | https://react-icons.github.io/react-icons/icons?name=fi |
-| Next.js | 3.0.3 | https://nextjs.org/docs/getting-started |
-| React Chart 2 | - | http://reactchartjs.github.io/react-chartjs-2/#/ |
-
-The design: https://dribbble.com/shots/15640240-The-Rise-dashboard-activity
-
----
-
-This is a [Next.js](https://nextjs.org/) project bootstrapped with [`create-next-app`](https://github.com/vercel/next.js/tree/canary/packages/create-next-app).
+# Roja Dashboard UI
 
 ## Getting Started
 
