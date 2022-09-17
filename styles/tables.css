@@ -1,0 +1,13 @@
+.ant-pagination-item-link {
+  display: flex !important;
+  justify-content: center !important;
+  align-items: center !important;
+}
+
+.ant-pagination-item-active {
+  border-color: #9b0909 !important;
+}
+.ant-pagination-item-active a {
+  color: #9b0909 !important;
+  font-weight: 900 !important;
+}

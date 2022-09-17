@@ -1,0 +1,31 @@
+/* .equity_button {
+  font-family: 'Roboto', sans-serif;
+  text-transform: uppercase;
+  outline: 0;
+  background: #a90a0a;
+  width: 100%;
+  height: 40px !important;
+  border: 0;
+  padding: 15px;
+  color: #ffffff;
+  font-size: 14px;
+  cursor: pointer;
+  display: flex !important;
+  justify-content: center !important;
+  align-items: center !important;
+}
+
+ */
+.btn_full {
+  width: 100%;
+}
+
+.btn_dark_red {
+  background-color: #a90a0a !important;
+  color: #ffffff !important;
+  font-size: 14px !important;
+  font-weight: 700 !important;
+  height: 42px !important;
+  border: none !important;
+  padding: 0px 2rem !important;
+}

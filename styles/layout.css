@@ -1,0 +1,103 @@
+.ant-layout.ant-layout-has-sider {
+  background: #ffffff;
+  height: 90vh;
+  position: relative;
+}
+
+aside.ant-layout-sider.ant-layout-sider-dark.equity_sidebar {
+  min-width: 15vw !important;
+}
+
+.sidebar_profile {
+  height: 30%;
+  background: #313622;
+}
+
+.sidebar_bottom {
+  background: #ffffff;
+  height: 8%;
+  display: flex;
+  align-items: center;
+  position: absolute;
+  bottom: 0;
+  right: 0;
+  left: 0;
+  z-index: 10;
+}
+
+.app_container {
+  background: #e2f5ee59 !important;
+}
+
+.ant-layout .ant-layout-has-sider {
+  width: auto !important;
+}
+.ant-layout-header.equity_header {
+  background-color: #9b0909 !important;
+  min-height: 95px !important;
+  margin: 0 !important;
+  padding: 0 2rem !important;
+}
+.equity_sidebar {
+  background: #ffffff !important;
+  box-shadow: -16px 3px 32px #00000029 !important;
+  position: relative !important;
+}
+
+.sidebar_menus {
+  overflow-y: scroll;
+  height: 70%;
+  background: #ffffff;
+  padding-bottom: 4rem;
+}
+
+.sidebar_menus::-webkit-scrollbar {
+  display: none;
+}
+
+.equity_sub_nav {
+  min-height: 95px !important;
+  background: #ffffff;
+  box-shadow: 0px 3px 7px #00000012;
+  padding: 0 2rem;
+  position: sticky;
+  top: 0;
+  z-index: 100;
+}
+
+.equity_pages_wrapper {
+  display: flex;
+  justify-content: space-between;
+  height: 90vh;
+  position: relative;
+  overflow-y: scroll;
+  background-color: #e2f5ee59 !important;
+}
+.equity_pages_wrapper.equity_justify_center {
+  justify-content: center;
+}
+
+.equity_pages_wrapper.equity_centered_item {
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+}
+.pages_left {
+  padding: 1rem;
+  width: 65%;
+  overflow-y: scroll;
+}
+.pages_right {
+  background: #ffffff;
+  width: 35%;
+  padding: 2rem 2rem 4rem 2rem;
+  box-shadow: -3px 2px 8px #0000000d;
+  overflow-y: scroll;
+  position: sticky;
+  top: 0;
+}
+
+.pages_left::-webkit-scrollbar,
+.pages_right::-webkit-scrollbar {
+  display: none;
+}

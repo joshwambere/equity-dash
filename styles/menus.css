@@ -1,0 +1,12 @@
+.ant-menu-item-selected {
+  background-color: #e2f5ee59 !important;
+}
+
+.ant-menu-item-selected span {
+  font-weight: 900 !important;
+}
+
+.ant-menu-item {
+  padding-left: 2rem !important;
+  margin: 0 !important;
+}
