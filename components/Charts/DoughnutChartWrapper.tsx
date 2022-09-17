@@ -23,9 +23,7 @@ const DoughnutChartWrapper = ({ children }: any) => {
               width: '100%',
               display: 'flex',
               justifyContent: 'center',
-            }}>
-            <span>20%</span>
-          </div>
+            }}></div>
         </>
       </div>
       {children}

@@ -23,7 +23,7 @@ const Login = (): JSX.Element => {
         SuccessMessage(res.message)
 
         if (res?.tokens) {
-          dispatch(setCredentials(res?.tokens?.refreshToken))
+          dispatch(setCredentials({ refreshToken: res?.tokens?.refreshToken }))
         }
         router.push(routes.dashboard.url)
       })
