@@ -1,17 +1,25 @@
-import { Avatar, Button, Table } from 'antd'
+import { Avatar, Button, Popconfirm, Table } from 'antd'
 import moment from 'moment'
 import React from 'react'
 import { abbreviator } from '../../helpers/abbreviator'
 import { useLazySuspendUserQuery } from '../../lib/endpoints/usersEndpoints'
+import { TableOnActionLoading } from '../Shared/Loaders'
+import { ErrorMessage } from '../Shared/Messages/ErrorMessage'
+import { SuccessMessage } from '../Shared/Messages/SuccessMessage'
 
 const UsersTable = ({ users }: any) => {
-  const [suspendUser, { isLoading }] = useLazySuspendUserQuery()
+  const [suspendUser, { isLoading, isFetching }] = useLazySuspendUserQuery()
 
   const handleSuspend = (id: any) => {
     suspendUser({ id: id })
+      .unwrap()
+      .then((res: any) => {
+        SuccessMessage(res.message)
+      })
+      .catch((err: any) => ErrorMessage(err?.data?.errorMessage))
   }
 
-  const ShortlistColumns: any = [
+  const UsersColumns: any = [
     {
       title: (
         <Avatar
@@ -84,9 +92,13 @@ const UsersTable = ({ users }: any) => {
       render: (record: any) => (
         <div className="flex justify-end">
           <div className="flex flex-col w-fit">
-            <Button loading={isLoading} onClick={() => handleSuspend(record?.id)} className="">
-              Actvate
-            </Button>
+            <Popconfirm
+              title="Are you sure to perform this?"
+              onConfirm={() => handleSuspend(record?.id)}
+              okText="Yes"
+              cancelText="No">
+              <Button className="">Suspend</Button>
+            </Popconfirm>
           </div>
         </div>
       ),
@@ -94,7 +106,11 @@ const UsersTable = ({ users }: any) => {
   ]
   return (
     <>
-      <Table columns={ShortlistColumns} dataSource={users} />
+      <Table
+        loading={TableOnActionLoading(isLoading || isFetching)}
+        columns={UsersColumns}
+        dataSource={users}
+      />
     </>
   )
 }

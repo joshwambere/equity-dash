@@ -3,6 +3,7 @@ import { Spin } from 'antd'
 import { LoadingOutlined } from '@ant-design/icons'
 
 const smallLoadingIcon = <LoadingOutlined style={{ fontSize: 25, color: '#9b0909' }} spin />
+const loadingIcon = <LoadingOutlined style={{ fontSize: 24, color: '#9b0909' }} spin />
 
 export const AppLoadingLoader = () => {
   const spinIcon = <LoadingOutlined style={{ fontSize: 30, color: '#9b0909' }} spin />
@@ -27,4 +28,11 @@ export const AppLoadingLoader = () => {
 
 export const SmallSpinLoader = () => {
   return <Spin indicator={smallLoadingIcon} />
+}
+
+export const TableOnActionLoading = (actionLoader: boolean) => {
+  return {
+    spinning: actionLoader,
+    indicator: <Spin indicator={loadingIcon} />,
+  }
 }
