@@ -2,16 +2,30 @@ import { Avatar, Button, Popconfirm, Table } from 'antd'
 import moment from 'moment'
 import React from 'react'
 import { abbreviator } from '../../helpers/abbreviator'
-import { useLazySuspendUserQuery } from '../../lib/endpoints/usersEndpoints'
+import {
+  useLazySuspendUserQuery,
+  useLazyActivateUserQuery,
+} from '../../lib/endpoints/usersEndpoints'
 import { TableOnActionLoading } from '../Shared/Loaders'
 import { ErrorMessage } from '../Shared/Messages/ErrorMessage'
 import { SuccessMessage } from '../Shared/Messages/SuccessMessage'
 
 const UsersTable = ({ users }: any) => {
   const [suspendUser, { isLoading, isFetching }] = useLazySuspendUserQuery()
+  const [activateUser, { isLoading: activating, isFetching: activeFetching }] =
+    useLazyActivateUserQuery()
 
   const handleSuspend = (id: any) => {
     suspendUser({ id: id })
+      .unwrap()
+      .then((res: any) => {
+        SuccessMessage(res.message)
+      })
+      .catch((err: any) => ErrorMessage(err?.data?.errorMessage))
+  }
+
+  const handleActivate = (id: any) => {
+    activateUser({ id: id })
       .unwrap()
       .then((res: any) => {
         SuccessMessage(res.message)
@@ -37,13 +51,11 @@ const UsersTable = ({ users }: any) => {
         <Avatar
           style={{
             backgroundColor: '#dfeef5',
-            border: `1px solid ${record?.decision === 'Rejected' ? '#e9432f' : '#35A8DF'}`,
+            border: `1px solid ${record?.verified === true ? '#35A8DF' : '#e9432f'}`,
           }}
           className="cursor-pointer">
           <span
-            className={`uppercase ${
-              record?.decision === 'Rejected' ? 'red_text' : 'text-black'
-            }  font-bold`}>
+            className={`uppercase ${record?.verified ? 'text-black' : 'text-red-400'}  font-bold`}>
             {record?.name && abbreviator(record?.name)}
           </span>
         </Avatar>
@@ -53,7 +65,7 @@ const UsersTable = ({ users }: any) => {
       title: 'Names & Reg date',
       key: 'Names',
       render: (record: any) => (
-        <div className={`flex flex-col ${record?.decision === 'Rejected' && 'red_text'}`}>
+        <div className={`flex flex-col ${!record?.verified && 'text-red-400'}`}>
           <span>{record?.name}</span>
           <span className="opacity-80 italic text-xs">
             Registered on: {record?.createdAt && moment(record?.createdAt).format('ll')}
@@ -65,7 +77,7 @@ const UsersTable = ({ users }: any) => {
       title: 'Email',
       key: 'email',
       render: (record: any) => (
-        <div className={`flex flex-col ${record?.decision === 'Rejected' && 'red_text'}`}>
+        <div className={`flex flex-col ${!record?.verified && 'text-red-400'}`}>
           <span>{record?.email}</span>
         </div>
       ),
@@ -74,7 +86,7 @@ const UsersTable = ({ users }: any) => {
       title: 'Role / Last update',
       key: 'update',
       render: (record: any) => (
-        <div className={`flex flex-col ${record?.decision === 'Rejected' && 'red_text'}`}>
+        <div className={`flex flex-col ${!record?.verified && 'text-red-400'}`}>
           <span>{record?.role_id?.name}</span>
           <span className="opacity-80 italic text-xs">
             {record?.updatedAt && moment(record?.updatedAt).format('ll')}
@@ -92,13 +104,23 @@ const UsersTable = ({ users }: any) => {
       render: (record: any) => (
         <div className="flex justify-end">
           <div className="flex flex-col w-fit">
-            <Popconfirm
-              title="Are you sure to perform this?"
-              onConfirm={() => handleSuspend(record?.id)}
-              okText="Yes"
-              cancelText="No">
-              <Button className="">Suspend</Button>
-            </Popconfirm>
+            {record?.verified ? (
+              <Popconfirm
+                title="Are you sure to perform this?"
+                onConfirm={() => handleSuspend(record?.id)}
+                okText="Yes"
+                cancelText="No">
+                <Button className="">Suspend</Button>
+              </Popconfirm>
+            ) : (
+              <Popconfirm
+                title="Are you sure to perform this?"
+                onConfirm={() => handleActivate(record?.id)}
+                okText="Yes"
+                cancelText="No">
+                <Button className="">Activate</Button>
+              </Popconfirm>
+            )}
           </div>
         </div>
       ),
@@ -107,7 +129,7 @@ const UsersTable = ({ users }: any) => {
   return (
     <>
       <Table
-        loading={TableOnActionLoading(isLoading || isFetching)}
+        loading={TableOnActionLoading(isLoading || isFetching || activating || activeFetching)}
         columns={UsersColumns}
         dataSource={users}
       />

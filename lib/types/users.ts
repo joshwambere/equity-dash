@@ -7,3 +7,7 @@ export interface UsersResponse {
 export interface SuspendUser {
   id: string
 }
+
+export interface ActivateUser {
+  id: string
+}
