@@ -8,6 +8,7 @@ import UserAnalyticsChart from '../../components/Charts/UserAnalyticsChart'
 import PrivateLayout from '../../components/Shared/Layout/Private'
 import { SmallSpinLoader } from '../../components/Shared/Loaders'
 import { TagsWrapper } from '../../components/Shared/MetaTags/TagsWrapper'
+import WithPrivateRoute from '../../components/Shared/WithPrivateRoute'
 
 import {
   useUserAnalyticsQuery,
@@ -146,4 +147,4 @@ const Analytics = (): JSX.Element => {
   )
 }
 
-export default Analytics
+export default WithPrivateRoute(Analytics)

@@ -1,6 +1,6 @@
 import React from 'react'
 
-const DoughnutChartWrapper = ({ children, percentage, title, DoughnutData }: any) => {
+const DoughnutChartWrapper = ({ children }: any) => {
   return (
     <div style={{ width: '100%', height: '100%', position: 'relative' }}>
       <div
@@ -17,24 +17,16 @@ const DoughnutChartWrapper = ({ children, percentage, title, DoughnutData }: any
           textAlign: 'center',
           zIndex: '999999999999999',
         }}>
-        {DoughnutData === undefined ? (
-          <span className="muted_text fowe400 text13">Something is wrong</span>
-        ) : (
-          <>
-            <span className="text28 fowe900 mabo16 text-black">
-              {percentage} {percentage && '%'}
-            </span>
-            <div
-              style={{
-                width: '100%',
-                display: 'flex',
-                justifyContent: 'center',
-              }}>
-              <div>20%</div>
-            </div>
-            <span className="muted_text fowe400 text13">{title}</span>
-          </>
-        )}
+        <>
+          <div
+            style={{
+              width: '100%',
+              display: 'flex',
+              justifyContent: 'center',
+            }}>
+            <span>20%</span>
+          </div>
+        </>
       </div>
       {children}
     </div>

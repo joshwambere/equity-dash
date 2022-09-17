@@ -2,6 +2,7 @@ import React from 'react'
 import PrivateLayout from '../../components/Shared/Layout/Private'
 import { SmallSpinLoader } from '../../components/Shared/Loaders'
 import { TagsWrapper } from '../../components/Shared/MetaTags/TagsWrapper'
+import WithPrivateRoute from '../../components/Shared/WithPrivateRoute'
 import UsersTable from '../../components/Tables/Users'
 import { useUsersQuery } from '../../lib/endpoints/usersEndpoints'
 
@@ -27,4 +28,4 @@ const Users = (): JSX.Element => {
   )
 }
 
-export default Users
+export default WithPrivateRoute(Users)

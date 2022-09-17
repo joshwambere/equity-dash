@@ -2,7 +2,7 @@ import React from 'react'
 import { Spin } from 'antd'
 import { LoadingOutlined } from '@ant-design/icons'
 
-const smallLoadingIcon = <LoadingOutlined style={{ fontSize: 13, color: '#9b0909' }} spin />
+const smallLoadingIcon = <LoadingOutlined style={{ fontSize: 25, color: '#9b0909' }} spin />
 
 export const AppLoadingLoader = () => {
   const spinIcon = <LoadingOutlined style={{ fontSize: 30, color: '#9b0909' }} spin />

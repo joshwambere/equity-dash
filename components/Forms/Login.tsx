@@ -22,8 +22,8 @@ const Login = (): JSX.Element => {
       .then((res: any) => {
         SuccessMessage(res.message)
 
-        if (res.refreshToken) {
-          dispatch(setCredentials(res.refreshToken))
+        if (res?.tokens) {
+          dispatch(setCredentials(res?.tokens?.refreshToken))
         }
         router.push(routes.dashboard.url)
       })

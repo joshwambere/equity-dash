@@ -1,5 +1,5 @@
 import { baseApi } from '../api/api'
-import { AnalyticsRequest, AnalyticsResponse, UsersAnalyticsRequest } from '../types/analytics'
+import { AnalyticsRequest, AnalyticsResponse } from '../types/analytics'
 
 const analyticsEndpoints = baseApi.injectEndpoints({
   endpoints: (builder) => ({

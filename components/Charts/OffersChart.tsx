@@ -4,7 +4,6 @@ import { Doughnut } from 'react-chartjs-2'
 import { Col, Row } from 'antd'
 import { chartCutout } from '../../lib/charts/cutouts'
 import DoughnutChartWrapper from './DoughnutChartWrapper'
-import DatesWRapper from './DatesWRapper'
 
 ChartJS.register(ArcElement, Tooltip, Legend)
 
@@ -18,7 +17,7 @@ export const options = {
     },
     title: {
       display: false,
-      text: 'Awesome chart',
+      text: 'EQuity chart',
     },
   },
   cutout: chartCutout,
@@ -26,12 +25,12 @@ export const options = {
 
 const OffersChart = ({ offersAnalytics }: any) => {
   const data = {
-    labels: offersAnalytics?.labels?.concat(''),
+    labels: offersAnalytics?.labels,
     datasets: [
       {
-        label: '',
-        data: offersAnalytics?.data,
-        backgroundColor: offersAnalytics?.datasets?.backgroundColor,
+        label: 'Offers',
+        data: offersAnalytics?.datasets[0]?.data,
+        backgroundColor: offersAnalytics?.datasets[0]?.backgroundColor,
         borderWidth: 0,
       },
     ],
@@ -42,10 +41,9 @@ const OffersChart = ({ offersAnalytics }: any) => {
         <Col flex="none">
           {offersAnalytics !== undefined && <span className="fowe900 text16">Offers</span>}
         </Col>
-        <DatesWRapper />
       </Row>
 
-      <DoughnutChartWrapper DoughnutData={offersAnalytics} title="title">
+      <DoughnutChartWrapper>
         <Doughnut height="100%" options={options} data={data} />
       </DoughnutChartWrapper>
     </>
